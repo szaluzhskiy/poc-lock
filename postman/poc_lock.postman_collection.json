@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "73c57b5d-a6b3-42da-a0c1-b61146bbb300",
+		"name": "poc_lock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8083/controller/send",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"topic\": \"createTopic\",\n\t\"workflowType\":\"UPDATE\",\n\t\"workflowStatus\":\"NOT_STARTED\",\n\t\"command\":{\n\t\"contractId\":\"contractId\",\n\t\"requestId\":\"requestId3\",\n\t\"stringValue\":\"str\",\n\t\"longValue\":\"5\",\n\t\"dateValue\":\"01.01.2005\"\t\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/controller/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"controller",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send_create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"topic\": \"createTopic\",\n\t\"workflowType\":\"CREATE\",\n\t\"workflowStatus\":\"NOT_STARTED\",\n\t\"command\":{\n\t\"contractId\":\"contractId\",\n\t\"requestId\":\"requestId2\",\n\t\"stringValue\":\"str\",\n\t\"longValue\":\"5\",\n\t\"dateValue\":\"01.01.2005\"\t\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/controller/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"controller",
+						"send"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

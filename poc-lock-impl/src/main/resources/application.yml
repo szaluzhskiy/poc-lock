@@ -1,0 +1,13 @@
+server:
+  port: 8083
+
+app:
+  cadence:
+    host: localhost
+    port: 7933
+    domain: poc_lock
+
+logging:
+  level:
+    ROOT: INFO
+    com.epam: DEBUG
