@@ -32,13 +32,15 @@ public class ContractWorkflowImpl implements ContractWorkflow {
   @Override
   public void processContract(ArrayList<WorkflowData> commandsQueue) {
     log.debug("contract_workflow_started");
-
-    WorkflowData data = commandsQueue.remove(commandsQueue.size() -1 );
-    if (data != null) {
-      log.info("Processing command id-{} requestId-{} date-{}", data.getCommand().getContractId(), data.getCommand().getRequestId(), data.getCommand().getDateValue());
-      Workflow.sleep(30_000);
-      log.debug("Continue to process size {}", commandsQueue.size());
-      Workflow.continueAsNew(this.commandsQueue);
+    if (commandsQueue != null && commandsQueue.size() > 0) {
+      WorkflowData data = commandsQueue.remove(0);
+      if (data != null) {
+        log.info("Processing command id-{} requestId-{} date-{}", data.getCommand().getContractId(), data.getCommand().getRequestId(), data.getCommand().getDateValue());
+        Workflow.sleep(15_000);
+        this.commandsQueue.addAll(commandsQueue);
+        log.debug("Continue to process size {}", this.commandsQueue.size());
+        Workflow.continueAsNew(this.commandsQueue);
+      }
     }
   }
 
